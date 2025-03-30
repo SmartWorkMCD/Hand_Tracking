@@ -1,7 +1,23 @@
 
 import json
+import pickle
 import time
+import paho.mqtt.client as mqtt
 
+from config import config , log_message
+
+def init_broker() -> mqtt.Client:
+    """Initialize the MQTT broker client with the provided configuration."""
+    client = mqtt.Client()
+    client.username_pw_set(config.BROKER_USER, config.BROKER_PASSWORD)
+    return client
+
+def connect_broker(client: mqtt.Client) -> None:
+    """Connect to the MQTT broker."""
+    client.connect(config.BROKER_IP, config.BROKER_PORT)
+    log_message(f"Connected to broker at {config.BROKER_IP}:{config.BROKER_PORT}")
+
+      
 landmark_names = [
     "Wrist",                # 0
     "Thumb_CMC",            # 1
@@ -27,7 +43,6 @@ landmark_names = [
 ]
 
 class Hands_Information:
-    
     def __init__(self):
         self.timestamp = time.time()
 
@@ -58,6 +73,14 @@ class Hands_Information:
     
     def from_json(self, json_str):
         self.__dict__ = json.loads(json_str)
+        return self
+        
+    def to_pickle(self):
+        return pickle.dumps(self.to_flat_dict())
+    
+    def from_pickle(self, pickle_str):
+        self.__dict__ = pickle.loads(pickle_str)
+        return self
         
     def __str__(self):
         return str(self.to_flat_dict())
