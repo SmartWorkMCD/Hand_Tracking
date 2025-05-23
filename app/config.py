@@ -2,7 +2,7 @@ from dataclasses import dataclass, fields
 import os
 import time
 from dotenv import load_dotenv
-load_dotenv(override=True)
+load_dotenv(override=False)
 
 def log_message(message: str, *args, level: str = "INFO"):
     timestamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
