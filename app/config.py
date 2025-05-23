@@ -33,7 +33,7 @@ class IPAddress(str):
 class Config:
     FLIP_CAMERA_V: bool = False
     FLIP_CAMERA_H: bool = True
-    SHOW_SCREEN: bool = True
+    SHOW_SCREEN: bool = False
     TARGET_FPS: int = 60
     CAMERA_ID: int = 0
     
