@@ -37,7 +37,7 @@ class Config:
     TARGET_FPS: int = 60
     CAMERA_ID: int = 0
 
-    BROKER_IP: str = os.environ.get("BROKER_IP", "127.0.0.1")
+    BROKER_IP: str = os.environ.get("BROKER_IP", "mqtt-broker")
     BROKER_PORT: int = int(os.environ.get("BROKER_PORT", 1883))
     BROKER_USER: str = os.environ.get("BROKER_USER", "user")
     BROKER_PASSWORD: str = os.environ.get("BROKER_PASSWORD", "password")
