@@ -36,11 +36,11 @@ class Config:
     SHOW_SCREEN: bool = False
     TARGET_FPS: int = 60
     CAMERA_ID: int = 0
-    
-    BROKER_IP: IPAddress = "127.0.0.1"
-    BROKER_PORT: int = 1883
-    BROKER_USER: str = "user"
-    BROKER_PASSWORD: str = "password"
+
+    BROKER_IP: str = os.environ.get("BROKER_IP", "127.0.0.1")
+    BROKER_PORT: int = int(os.environ.get("BROKER_PORT", 1883))
+    BROKER_USER: str = os.environ.get("BROKER_USER", "user")
+    BROKER_PASSWORD: str = os.environ.get("BROKER_PASSWORD", "password")
     BROKER_TOPIC: str = "hands/position"
     
     VERBOSE: bool = False
