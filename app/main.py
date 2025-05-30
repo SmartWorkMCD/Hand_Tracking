@@ -42,9 +42,8 @@ def process_frame(frame):
     hand_results = hands.process(frame)
 
     h, w, _ = frame.shape
-    hand_msg = None
+    hand_msg = Hands_Information()
     if hand_results.multi_hand_landmarks:
-        hand_msg = Hands_Information()
         for i, hand_landmarks in enumerate(hand_results.multi_hand_landmarks):
             # get handedness (left or right hand)
             handedness = hand_results.multi_handedness[i].classification[0].label
@@ -127,7 +126,7 @@ def main():
                 
             hand_msg =  process_frame(frame)
             
-            if hand_msg is not None:
+            if True:
                 hand_msg.timestamp = time.time()
                 json_str = hand_msg.to_json()
                 client.publish(config.BROKER_TOPIC, json_str)

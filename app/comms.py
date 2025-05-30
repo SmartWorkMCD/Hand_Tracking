@@ -45,6 +45,8 @@ landmark_names = [
 class Hands_Information:
     def __init__(self):
         self.timestamp = time.time()
+        self.handR_has = False
+        self.handL_has = False
 
     def add_hand(self, hand, handedness, pointing_angle):
         hand_prefix = "hand" + handedness[0].upper()
