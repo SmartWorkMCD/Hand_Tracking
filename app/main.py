@@ -129,6 +129,7 @@ def main():
             if True:
                 hand_msg.timestamp = time.time()
                 json_str = hand_msg.to_json()
+                print(json_str)
                 client.publish(config.BROKER_TOPIC, json_str)
               
             time.sleep(max(0, (1 / config.TARGET_FPS) - (time.time() - s_time)))
