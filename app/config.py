@@ -78,6 +78,7 @@ def validate_config(config: Config):
             raise TypeError(
                 f"Config value {field.name} must be of type {expected_type}, but got {type(value)}"
             )
+    print(config)
     return config
     
     
